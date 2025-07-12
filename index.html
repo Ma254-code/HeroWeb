@@ -7,7 +7,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-    /* Grundstyles */
     body, html {
       margin: 0;
       padding: 0;
@@ -18,7 +17,6 @@
       color: #e0e0e0;
     }
 
-    /* Hintergrundbild mit dunklem Overlay */
     .HeroSMP {
       position: fixed;
       top: 0; left: 0;
@@ -31,7 +29,6 @@
       opacity: 0;
     }
 
-    /* Animationen */
     @keyframes fadeIn {
       to { opacity: 1; }
     }
@@ -47,7 +44,6 @@
       }
     }
 
-    /* Navigation Container */
     .container {
       position: fixed;
       top: 24px;
@@ -60,7 +56,6 @@
       opacity: 0;
     }
 
-    /* Nav Links */
     .menu {
       color: #a0cfff;
       text-decoration: none;
@@ -86,7 +81,6 @@
       width: 100%;
     }
 
-    /* Logo */
     .logo {
       position: fixed;
       top: 20px;
@@ -96,58 +90,47 @@
       opacity: 0;
     }
 
-    /* Hauptüberschrift */
-    .schrift {
+    /* Zentrale Box für Text und Button */
+    .hero-content {
       position: absolute;
-      top: 55vh;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       text-align: center;
-      font-size: 72px;
+      max-width: 850px;
+      padding: 0 20px;
+      animation: slideInUp 1.6s ease forwards;
+      opacity: 0;
       color: #e0f7ff;
+    }
+
+    .hero-content h1 {
+      font-size: 72px;
+      margin-bottom: 0.3em;
+      font-weight: 700;
       text-shadow:
         0 0 8px #00d9ff,
         0 0 20px #00d9ff,
         0 0 30px #00d9ff,
         0 0 40px #00d9ff;
-      animation: slideInUp 1.6s ease forwards;
-      opacity: 0;
-      width: 90vw;
-      max-width: 900px;
-      font-weight: 700;
       line-height: 1.1;
     }
-    .blue {
+    .hero-content h1 .blue {
       color: #00d9ff;
     }
 
-    /* Unterzeile */
-    .subtitle {
-      position: absolute;
-      top: calc(55vh + 100px);
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 24px;
+    .hero-content p.info-text {
+      font-size: 20px;
+      margin-bottom: 1.2em;
+      color: #9ad6ffcc;
       font-weight: 500;
-      color: #77c8f8;
-      text-shadow: 0 0 8px #00d9ff66;
-      animation: slideInUp 1.8s ease forwards;
-      opacity: 0;
-      width: 90vw;
       max-width: 600px;
-      text-align: center;
-      letter-spacing: 0.05em;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+      text-shadow: 0 0 6px #00d9ff66;
     }
 
-    /* Shop Button */
-    .cta-container {
-      position: absolute;
-      top: calc(55vh + 180px);
-      left: 50%;
-      transform: translateX(-50%);
-      animation: slideInUp 2s ease forwards;
-      opacity: 0;
-    }
     .cta-button {
       background: linear-gradient(135deg, #00d9ff, #0077a3);
       color: #000;
@@ -173,15 +156,12 @@
         0 0 50px #00d9ffff;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
-      .schrift {
+      .hero-content h1 {
         font-size: 38px;
-        top: 50vh;
       }
-      .subtitle {
-        font-size: 18px;
-        top: calc(50vh + 60px);
+      .hero-content p.info-text {
+        font-size: 16px;
       }
       .cta-button {
         font-size: 20px;
@@ -212,11 +192,13 @@
 
   <img src="BILD 3.png" class="logo" alt="HeroSMP Logo" />
 
-  <h1 class="schrift">Der Beste MC Server EU – das ist <span class="blue">HeroSMP</span></h1>
-  <p class="subtitle">Tauche ein in die Welt von HeroSMP und erlebe das beste Minecraft Abenteuer Europas.</p>
-
-  <div class="cta-container">
-    <button class="cta-button" onclick="window.location.href='HIER_DEIN_SHOP_LINK.html'">Shop besuchen</button>
+  <div class="hero-content">
+    <h1>Der Beste MC Server EU – das ist <span class="blue">HeroSMP</span></h1>
+    <p class="info-text">
+      HeroSMP verbindet Community, Spannung und spannende Minecraft-Abenteuer in einem Server, der seinesgleichen sucht.  
+      Tritt ein und werde Teil der Helden!
+    </p>
+    <button class="cta-button" onclick="window.location.href='https://ma254-code.github.io/-/'">Shop besuchen</button>
   </div>
 
 </body>
