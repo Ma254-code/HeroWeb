@@ -2,98 +2,43 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HeroSMP</title>
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    /* Grundstyles */
+    body, html {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: black;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #000814, #001d3d);
       overflow-x: hidden;
+      color: #e0e0e0;
     }
 
+    /* Hintergrundbild mit dunklem Overlay */
     .HeroSMP {
-      height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
       width: 100%;
+      height: 100vh;
       object-fit: cover;
-      filter: brightness(0.5);
-      animation: fadeIn 2s ease-out forwards;
+      filter: brightness(0.3);
+      z-index: -1;
+      animation: fadeIn 2s ease forwards;
       opacity: 0;
     }
 
+    /* Animationen */
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      to { opacity: 1; }
     }
 
-    .container {
-      position: absolute;
-      right: 32px;
-      top: 16px;
-      font-size: 24px;
-      animation: slideInRight 1.5s ease-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes slideInRight {
+    @keyframes slideInUp {
       from {
-        transform: translateX(100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    .menu {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-      transition: transform 0.2s ease, text-decoration 0.2s ease;
-    }
-
-    .menu:hover {
-      text-decoration: underline;
-      transform: scale(1.05);
-    }
-
-    .logo {
-      position: absolute;
-      left: 32px;
-      top: 16px;
-      width: 120px;
-      animation: slideInLeft 1.5s ease-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-100px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    .schrift {
-      position: absolute;
-      left: 50px;
-      top: 600px;
-      color: aliceblue;
-      font-size: 70px;
-      width: 600px;
-      text-shadow: 5px 50px 50px rgba(0,0,0,0.8);
-      animation: fadeUp 2s ease-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeUp {
-      from {
-        transform: translateY(50px);
+        transform: translateY(40px);
         opacity: 0;
       }
       to {
@@ -102,62 +47,154 @@
       }
     }
 
-    .blue {
-      color: rgb(0, 217, 255);
-    }
-
-    .button {
-      background-color: rgb(0, 217, 255);
-      padding: 8px 30px;
-      color: black;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0,217,255,0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px rgba(0,217,255,0.8);
-    }
-
-    .cta-container {
-      position: absolute;
-      top: 80%;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      animation: fadeUp 2.5s ease-out forwards;
+    /* Navigation Container */
+    .container {
+      position: fixed;
+      top: 24px;
+      right: 40px;
+      font-size: 18px;
+      display: flex;
+      gap: 24px;
+      z-index: 10;
+      animation: fadeIn 2s 0.5s ease forwards;
       opacity: 0;
     }
 
-    .cta-button {
-      background: linear-gradient(45deg, rgb(0,217,255), rgb(0,157,200));
-      color: white;
-      padding: 15px 50px;
+    /* Nav Links */
+    .menu {
+      color: #a0cfff;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .menu::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #00d9ff;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    .menu:hover {
+      color: #00d9ff;
+    }
+    .menu:hover::after {
+      width: 100%;
+    }
+
+    /* Logo */
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 40px;
+      width: 130px;
+      animation: fadeIn 2s 0.7s ease forwards;
+      opacity: 0;
+    }
+
+    /* Hauptüberschrift */
+    .schrift {
+      position: absolute;
+      top: 55vh;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 72px;
+      color: #e0f7ff;
+      text-shadow:
+        0 0 8px #00d9ff,
+        0 0 20px #00d9ff,
+        0 0 30px #00d9ff,
+        0 0 40px #00d9ff;
+      animation: slideInUp 1.6s ease forwards;
+      opacity: 0;
+      width: 90vw;
+      max-width: 900px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .blue {
+      color: #00d9ff;
+    }
+
+    /* Unterzeile */
+    .subtitle {
+      position: absolute;
+      top: calc(55vh + 100px);
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 24px;
+      font-weight: 500;
+      color: #77c8f8;
+      text-shadow: 0 0 8px #00d9ff66;
+      animation: slideInUp 1.8s ease forwards;
+      opacity: 0;
+      width: 90vw;
+      max-width: 600px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    /* Shop Button */
+    .cta-container {
+      position: absolute;
+      top: calc(55vh + 180px);
+      left: 50%;
+      transform: translateX(-50%);
+      animation: slideInUp 2s ease forwards;
+      opacity: 0;
+    }
+    .cta-button {
+      background: linear-gradient(135deg, #00d9ff, #0077a3);
+      color: #000;
+      padding: 18px 60px;
+      font-size: 28px;
+      font-weight: 700;
       border: none;
-      border-radius: 12px;
+      border-radius: 40px;
       cursor: pointer;
+      box-shadow:
+        0 0 10px #00d9ff88,
+        0 0 20px #00d9ffbb,
+        0 0 30px #00d9ffdd;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 20px rgba(0,217,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
-
     .cta-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px rgba(0,217,255,0.8);
+      transform: scale(1.15);
+      box-shadow:
+        0 0 15px #00d9ffdd,
+        0 0 35px #00d9ffff,
+        0 0 50px #00d9ffff;
     }
 
-    @media(max-width: 768px) {
+    /* Responsive */
+    @media (max-width: 768px) {
       .schrift {
-        font-size: 40px;
-        width: 90%;
-        left: 20px;
-        top: 400px;
+        font-size: 38px;
+        top: 50vh;
       }
-
+      .subtitle {
+        font-size: 18px;
+        top: calc(50vh + 60px);
+      }
       .cta-button {
         font-size: 20px;
-        padding: 12px 30px;
+        padding: 14px 40px;
+      }
+      .container {
+        font-size: 16px;
+        right: 20px;
+        gap: 16px;
+      }
+      .logo {
+        width: 90px;
+        left: 20px;
       }
     }
   </style>
@@ -176,14 +213,11 @@
   <img src="BILD 3.png" class="logo" alt="HeroSMP Logo" />
 
   <h1 class="schrift">Der Beste MC Server EU – das ist <span class="blue">HeroSMP</span></h1>
+  <p class="subtitle">Tauche ein in die Welt von HeroSMP und erlebe das beste Minecraft Abenteuer Europas.</p>
 
-  <!-- Call to Action Button -->
   <div class="cta-container">
-    <button class="cta-button" onclick="window.location.href='HIER-DEIN-LINK.html'">
-      Jetzt beitreten
-    </button>
+    <button class="cta-button" onclick="window.location.href='HIER_DEIN_SHOP_LINK.html'">Shop besuchen</button>
   </div>
 
 </body>
 </html>
-
